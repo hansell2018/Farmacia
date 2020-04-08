@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_EMPLEADO>
+
+@{
+    ViewBag.Title = "LISTADO DE EMPLEADOS";
+    Layout = "~/Views/Shared/_LayoutFom.cshtml";
+}
+
+<table class="table table-responsive table-hover ">
+
+    <thead class="p-3 mb-2 bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CODIGO_EMP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOMBRES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.APELLIDOS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_NAC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DPI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DIRECCION)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODIGO_EMP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRES)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APELLIDOS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_NAC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DPI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DIRECCION)
+                </td>
+                <td class="btn-group-xs">
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.CODIGO_EMP }, new { @class = "btn btn-primary" })
+                    @*@Html.ActionLink("DETALLE", "Details", new { id=item.CODIGO_EMP }, new { @class = "btn btn-primary" }) |*@
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.CODIGO_EMP }, new { @class = "btn btn-primary" })*@
+                </td>
+            </tr>
+        }
+
+</table>

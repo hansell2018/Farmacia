@@ -1,0 +1,70 @@
+﻿@model FARMACIA_SEMI.Models.FAR_ARTICULO
+
+@{
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+
+<div class="panel panel-primary col-sm-7">
+    <div class="panel-heading">ACTUALIZACION REGISTRO DE PRODUCTOS</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID_ARTICULO)
+
+                <div class="form-group ">
+                    @Html.LabelFor(model => model.ID_MARCA, "ID_MARCA", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_MARCA", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MARCA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_CAT, "ID_CAT", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_CAT", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_CAT, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_MEDIDA, "ID_MEDIDA", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ID_MEDIDA", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ID_MEDIDA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DESC_ARTICULO, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DESC_ARTICULO, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DESC_ARTICULO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-horizontal">
+                <div class="col-md-6">
+                    <input type="submit" value="GUARDAR REGISTRO" class="btn btn-primary" />
+                </div>
+                <div form-horizontal>
+                    @Html.ActionLink("REGRESAR A INICIO", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

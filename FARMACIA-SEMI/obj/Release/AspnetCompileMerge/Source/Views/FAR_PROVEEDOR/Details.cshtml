@@ -1,0 +1,51 @@
+﻿@model FARMACIA_SEMI.Models.FAR_PROVEEDOR
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FAR_PROVEEDOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_NIT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_NIT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOM_CONTACTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOM_CONTACTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEL_CONTACTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEL_CONTACTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEL_PROVEEDOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEL_PROVEEDOR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NIT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

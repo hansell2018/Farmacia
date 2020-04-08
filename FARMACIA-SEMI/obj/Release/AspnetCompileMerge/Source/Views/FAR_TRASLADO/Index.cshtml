@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_TRASLADO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_EMPLEADO.NOMBRES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL1.DESC_SUCURSAL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_EMPLEADO.NOMBRES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_SUCURSAL.DESC_SUCURSAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_SUCURSAL1.DESC_SUCURSAL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TRASLADO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_TRASLADO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TRASLADO })
+        </td>
+    </tr>
+}
+
+</table>

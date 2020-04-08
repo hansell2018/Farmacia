@@ -1,0 +1,115 @@
+﻿@model FARMACIA_SEMI.Models.Traslado
+
+@{
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">MOVIMIENTOS INTERNO DE MEDICAMENTOS</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Traslados", "Traslados", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            <div class="row form-group-sm">
+
+                <div class="col-sm-6">
+                    @Html.LabelFor(model => model.far_traslado.ID_ORIGEN, "DE SUCURSAL", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-6">
+                        @Html.DropDownList("ID_ORIGEN", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.far_traslado.ID_ORIGEN, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    @Html.LabelFor(model => model.far_traslado.ID_DESTINO, "A SUCURSAL", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-6">
+                        @Html.DropDownList("ID_DESTINO", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.far_traslado.ID_DESTINO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group-sm">
+                <div class="col-sm-6">
+                    @Html.LabelFor(model => model.far_traslado.CODIGO_EMP, "EMPLEADO", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-sm-6">
+                        @Html.DropDownList("CODIGO_EMP", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.far_traslado.CODIGO_EMP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="btn-group-xs">
+                        @Html.ActionLink("NUEVO PRODUCTO", "agregarProducto", "Traslados", null, new { @class = "btn btn-primary" })
+                        <input type="submit" value="REGISTRAR TRASLADO" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+        }
+
+        <h3>DETALLE TRASLADO DE ARTÍCULOS</h3>
+
+        <table class="table table-bordered table-responsive table-hover">
+            <thead class="p-3 mb-2 bg-success text-white">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_traslado[0].ITEM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_traslado[0].ID_ARTICULO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_traslado[0].DESCRIPCION)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_traslado[0].CANTIDAD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_traslado[0].DES_MEDIDA)
+                    </th>
+                </tr>
+            </thead>
+                @foreach (var item in Model.far_det_traslado)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ITEM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_ARTICULO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CANTIDAD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DES_MEDIDA)
+                        </td>
+                        <td class="btn-group-xs">
+                            @Html.ActionLink("BORRAR", "EliminarItem", new {id=item.ITEM }, new { @class="btn btn-primary"})
+                        </td>
+                    </tr>
+                }
+
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("REGRESAR", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+</div>
+<br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

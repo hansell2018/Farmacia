@@ -1,0 +1,48 @@
+﻿@model FARMACIA_SEMI.Models.FAR_ARTICULO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DESC_ARTICULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESC_ARTICULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_CAT_ARTICULO.DESC_CAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_CAT_ARTICULO.DESC_CAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_MARCA.DESC_MARCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_MARCA.DESC_MARCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_UNIDAD_MED.DESC_MEDIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_UNIDAD_MED.DESC_MEDIDA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ARTICULO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

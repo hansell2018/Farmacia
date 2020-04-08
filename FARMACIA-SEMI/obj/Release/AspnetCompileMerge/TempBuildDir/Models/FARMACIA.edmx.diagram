@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b6d6c76229a41aab089b0718ebfca9a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_ARTICULO" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_CAT_ARTICULO" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_CLIENTE" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_COMPRA" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_DET_TRASLADO" Width="1.5" PointX="11.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_DETALLE_COMPRA" Width="1.5" PointX="11.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_DETALLE_VENTA" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_EMP_SUC" Width="1.5" PointX="6" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_EMPLEADO" Width="1.5" PointX="6.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_ESTATUS" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_EXISTENCIA" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_MARCA" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_MOV_CAJA" Width="1.5" PointX="6" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_PAGO_PLANILLA" Width="1.5" PointX="6" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_PROVEEDOR" Width="1.5" PointX="0.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_PUESTO" Width="1.5" PointX="3.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_ROL" Width="1.5" PointX="6.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_RUTA" Width="1.5" PointX="3" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_SUCURSAL" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_SUCURSAL_ACTIVO" Width="1.5" PointX="9" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_TIPO_PAGO" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_TRASLADO" Width="1.5" PointX="9" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_TTRANSACCION" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_UNIDAD_MED" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_USUARIO" Width="1.5" PointX="9" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_VENTA" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_ZONA" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <AssociationConnector Association="FARMACIAModel.FK_ARTICULO1" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_ARTICULO2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_ARTICULO3" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_COMPRA" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_TRAS2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_VENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_EXISTENCIA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_SUC_ACT" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_VENTA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_COMPRA1" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_COMPRA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_COMPRA3" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_COMPRA4" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_COMPRA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_TRAS" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_DET_VENTA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_EMP_SUC" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_EMP_SUC2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_EMP_SUC3" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_PAG_EMP2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_TRASLA3" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_USUARIO2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_MOV_CAJA4" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_TRASLA4" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_USUARIO4" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_VENTA4" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_EXISTENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_MOV_CAJA" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_MOV_CAJA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_PAG_EMP1" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_RUTA" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_RUTA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_SUC_ACT2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_TRASLA1" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_TRASLA2" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_USUARIO3" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_VENTA1" ManuallyRouted="false" />
+        <AssociationConnector Association="FARMACIAModel.FK_VENTA3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FARMACIAModel.FAR_PLANILLA" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="FARMACIAModel.FK_PAG_EMP3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

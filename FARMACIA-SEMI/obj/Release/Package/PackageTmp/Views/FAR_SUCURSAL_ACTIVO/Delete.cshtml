@@ -1,0 +1,73 @@
+﻿@model FARMACIA_SEMI.Models.FAR_SUCURSAL_ACTIVO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutFom.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FAR_SUCURSAL_ACTIVO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COSTO_ACTIVO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COSTO_ACTIVO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMENTARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMENTARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ALTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ALTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_BAJA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_BAJA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

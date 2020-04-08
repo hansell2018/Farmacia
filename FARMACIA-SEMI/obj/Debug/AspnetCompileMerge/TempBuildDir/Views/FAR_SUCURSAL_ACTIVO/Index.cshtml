@@ -1,0 +1,103 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_SUCURSAL_ACTIVO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFom.cshtml";
+}
+
+
+<html>
+<head>
+    <script>
+        function doSearch() {
+            var tableReg = document.getElementById('datos');
+            var searchText = document.getElementById('searchTerm').value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++) {
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+<input type="text" id="searchTerm" value="" onkeyup="doSearch()" class="form-control" placeholder="QUÉ PRODUCTO BUSCAS ?" />
+<br />
+<table class="table table-hover" id="datos">
+    <thead class="p-3 mb-2 bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COSTO_ACTIVO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMENTARIO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_ALTA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_BAJA)
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAR_SUCURSAL.DESC_SUCURSAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAR_ARTICULO.DESC_ARTICULO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COSTO_ACTIVO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMENTARIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA_ALTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA_BAJA)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>
+</body>
+</html>

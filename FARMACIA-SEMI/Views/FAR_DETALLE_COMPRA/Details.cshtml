@@ -1,0 +1,58 @@
+﻿@model FARMACIA_SEMI.Models.FAR_DETALLE_COMPRA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FAR_DETALLE_COMPRA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ITEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITEM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COSTO_U)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COSTO_U)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_COMPRA.FACTURA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_COMPRA.FACTURA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FACTURA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

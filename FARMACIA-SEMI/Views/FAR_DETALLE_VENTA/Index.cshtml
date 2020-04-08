@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_DETALLE_VENTA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COSTO_U)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_ARTICULO.DESC_ARTICULO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_VENTA.FACTURA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANTIDAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COSTO_U)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_ARTICULO.DESC_ARTICULO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_VENTA.FACTURA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

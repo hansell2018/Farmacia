@@ -1,0 +1,189 @@
+﻿@model FARMACIA_SEMI.Models.FAR_USUARIO
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        html, body {
+            background-image: url('https://reskytnew.s3.amazonaws.com/2762/farmacia-banuls-la-farmacia-104075.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            font-family: 'Numans', sans-serif;
+        }
+        .card {
+            height: 370px;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 400px;
+            background-color: rgba(0,0,0,0.5) !important;
+        }
+        .card-header h3 {
+            color: white;
+        }
+        .social_icon span:hover {
+            color: white;
+            cursor: pointer;
+        }
+        .input-group-prepend span {
+            width: 50px;
+            background-color: #FFC312;
+            color: black;
+            border: 0 !important;
+        }
+
+        input:focus {
+            outline: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .remember {
+            color: white;
+        }
+        .login_btn:hover {
+            color: black;
+            background-color: white;
+        }
+        /*
+        .container {
+            height: 100%;
+            align-content: center;
+        }
+
+
+
+        .social_icon span {
+            font-size: 60px;
+            margin-left: 10px;
+            color: #FFC312;
+        }
+
+            .social_icon span:hover {
+                color: white;
+                cursor: pointer;
+            }
+
+        .card-header h3 {
+            color: white;
+        }
+
+
+        .input-group-prepend span {
+            width: 50px;
+            background-color: #FFC312;
+            color: black;
+            border: 0 !important;
+        }
+
+        input:focus {
+            outline: 0 0 0 0 !important;
+            box-shadow: 0 0 0 0 !important;
+        }
+
+        .remember {
+            color: white;
+        }
+
+            .remember input {
+                width: 20px;
+                height: 20px;
+                margin-left: 15px;
+                margin-right: 5px;
+            }
+
+        .login_btn {
+            color: black;
+            background-color: #FFC312;
+            width: 100px;
+        }
+
+            .login_btn:hover {
+                color: black;
+                background-color: white;
+            }
+
+        .links {
+            color: white;
+        }
+
+            .links a {
+                margin-left: 4px;
+            }
+        */
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse ">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("INICIO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SALIR", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">MOVIMIENTOS<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("FACTURACION", "Facturacion", "Facturacion")</li>
+                        <li>@Html.ActionLink("REGISTRAR COMPRA", "Compra", "Compra")</li>
+                        <li>@Html.ActionLink("TRASLADOS", "Traslados", "Traslados")</li>
+                        <li>@Html.ActionLink("GENERACION PLANILLA", "CREATE", "FAR_PAGO_PLANILLA")</li>
+                    </ul>
+                </li>
+                @{
+                    var rol = Session["usuario"] as FARMACIA_SEMI.Models.FAR_USUARIO;
+
+                    if (rol.ID_ROL <= 2)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">MANTENIMIENTOS<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("PRODUCTOS", "Index", "FAR_ARTICULO")</li>
+                                <li>@Html.ActionLink("PROVEEDORES", "Index", "FAR_PROVEEDOR")</li>
+                                <li>@Html.ActionLink("CLIENTES", "Index", "FAR_CLIENTE")</li>
+                                <li>@Html.ActionLink("USUARIOS", "Index", "FAR_USUARIO")</li>
+                                <li>@Html.ActionLink("EMPLEADOS", "Index", "FAR_EMPLEADO")</li>
+                                <li>@Html.ActionLink("PLANILLA", "Index", "FAR_PLANILLA")</li>
+                            </ul>
+                        </li>
+                    }
+
+
+                }
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONSULTAS<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("EXISTENCIAS", "Index", "FAR_EXISTENCIA")</li>
+                        <li>@Html.ActionLink("FLUJO DE CAJA", "Index", "FAR_MOV_CAJA")</li>
+                        <li>@Html.ActionLink("PLANILLA", "Index", "FAR_PAGO_PLANILLA")</li>
+                        <li>@Html.ActionLink("ACTIVOS-SUCURSAL", "Index", "FAR_SUCURSAL_ACTIVO")</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <br />
+    <footer>
+        <p>&copy; @DateTime.Now.Year -PROYECTO SEMINARIO</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

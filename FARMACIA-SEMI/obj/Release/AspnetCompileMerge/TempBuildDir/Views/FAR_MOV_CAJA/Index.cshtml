@@ -1,0 +1,120 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_MOV_CAJA>
+
+@{
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        function doSearch() {
+            var tableReg = document.getElementById('datos');
+            var searchText = document.getElementById('searchTerm').value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++) {
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">MOVIMIENTOS DE CAJA</div>
+        <div class="panel-body">
+            <input type="text" id="searchTerm" value="" onkeyup="doSearch()" class="form-control" placeholder="QUÉ MOVIMIENTO BUSCAS ?" />
+            <br />
+
+            <div class="form-group">
+                @Html.ActionLink("MOV EFECTIVO", "Create", null, new { @class = "btn btn-primary" })
+
+                @Html.ActionLink("REGRESAR A INICIO", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+            </div>
+
+            <br />
+            <table class="table table-bordered" id="datos">
+
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FAR_TTRANSACCION.DESC_TANSACCION)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DOCUMENTO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FECHA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MONTO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SALDO)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.COMENTARIO)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FAR_SUCURSAL.DESC_SUCURSAL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FAR_TTRANSACCION.DESC_TANSACCION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DOCUMENTO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FECHA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONTO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SALDO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COMENTARIO)
+                        </td>
+                        @*/*
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                            */*@
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

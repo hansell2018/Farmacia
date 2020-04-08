@@ -1,0 +1,101 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_ARTICULO>
+@{
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script>
+        function doSearch() {
+            var tableReg = document.getElementById('datos');
+            var searchText = document.getElementById('searchTerm').value.toLowerCase();
+            var cellsOfRow = "";
+            var found = false;
+            var compareWith = "";
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (var i = 1; i < tableReg.rows.length; i++) {
+                cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                found = false;
+                // Recorremos todas las celdas
+                for (var j = 0; j < cellsOfRow.length && !found; j++) {
+                    compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || (compareWith.indexOf(searchText) > -1)) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-group">
+        @Html.ActionLink("NUEVO PRODUCTO", "Create", null, new { @class = "btn btn-primary" })
+
+        @Html.ActionLink("REGRESAR A INICIO", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">MANTENIMIENTO DE ARTICULOS</div>
+        <br />
+        <div class="col-sm-6">
+            <input type="text" id="searchTerm" onkeyup="doSearch()" class="col-sm-6 form-control" placeholder="QUÉ PRODUCTO BUSCAS ?" />
+        </div>
+        <br />
+        <div class="panel-body">
+
+            <table class="table table-bordered table-hover " id="datos">
+                <thead class="p-3 mb-2 bg-success text-white">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DESC_ARTICULO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FAR_CAT_ARTICULO.DESC_CAT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FAR_MARCA.DESC_MARCA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FAR_UNIDAD_MED.DESC_MEDIDA)
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DESC_ARTICULO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FAR_CAT_ARTICULO.DESC_CAT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FAR_MARCA.DESC_MARCA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FAR_UNIDAD_MED.DESC_MEDIDA)
+                        </td>
+                        <td  class="btn-group-xs">
+                            @Html.ActionLink("EDITAR", "Edit", new { id = item.ID_ARTICULO }, new { @class = "btn-primary btn" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

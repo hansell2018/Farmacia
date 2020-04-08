@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FARMACIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FAR_ARTICULO">
+    <Key>
+      <PropertyRef Name="ID_ARTICULO" />
+    </Key>
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_MARCA" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_CAT" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_MEDIDA" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DESC_ARTICULO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_CAT_ARTICULO" Relationship="Self.FK_ARTICULO1" FromRole="FAR_ARTICULO" ToRole="FAR_CAT_ARTICULO" />
+    <NavigationProperty Name="FAR_MARCA" Relationship="Self.FK_ARTICULO2" FromRole="FAR_ARTICULO" ToRole="FAR_MARCA" />
+    <NavigationProperty Name="FAR_UNIDAD_MED" Relationship="Self.FK_ARTICULO3" FromRole="FAR_ARTICULO" ToRole="FAR_UNIDAD_MED" />
+    <NavigationProperty Name="FAR_DETALLE_COMPRA" Relationship="Self.FK_DET_COMPRA" FromRole="FAR_ARTICULO" ToRole="FAR_DETALLE_COMPRA" />
+    <NavigationProperty Name="FAR_DET_TRASLADO" Relationship="Self.FK_DET_TRAS2" FromRole="FAR_ARTICULO" ToRole="FAR_DET_TRASLADO" />
+    <NavigationProperty Name="FAR_DETALLE_VENTA" Relationship="Self.FK_DET_VENTA" FromRole="FAR_ARTICULO" ToRole="FAR_DETALLE_VENTA" />
+    <NavigationProperty Name="FAR_EXISTENCIA" Relationship="Self.FK_EXISTENCIA2" FromRole="FAR_ARTICULO" ToRole="FAR_EXISTENCIA" />
+    <NavigationProperty Name="FAR_SUCURSAL_ACTIVO" Relationship="Self.FK_SUC_ACT" FromRole="FAR_ARTICULO" ToRole="FAR_SUCURSAL_ACTIVO" />
+  </EntityType>
+  <EntityType Name="FAR_CAT_ARTICULO">
+    <Key>
+      <PropertyRef Name="ID_CAT" />
+    </Key>
+    <Property Name="ID_CAT" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_CAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_BAJA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_ARTICULO1" FromRole="FAR_CAT_ARTICULO" ToRole="FAR_ARTICULO" />
+  </EntityType>
+  <EntityType Name="FAR_CLIENTE">
+    <Key>
+      <PropertyRef Name="NIT" />
+    </Key>
+    <Property Name="NIT" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDOS" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_VENTA" Relationship="Self.FK_VENTA2" FromRole="FAR_CLIENTE" ToRole="FAR_VENTA" />
+  </EntityType>
+  <EntityType Name="FAR_COMPRA">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NIT" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TPAGO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_COMPRA1" FromRole="FAR_COMPRA" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_PROVEEDOR" Relationship="Self.FK_COMPRA2" FromRole="FAR_COMPRA" ToRole="FAR_PROVEEDOR" />
+    <NavigationProperty Name="FAR_TIPO_PAGO" Relationship="Self.FK_COMPRA3" FromRole="FAR_COMPRA" ToRole="FAR_TIPO_PAGO" />
+    <NavigationProperty Name="FAR_ESTATUS" Relationship="Self.FK_COMPRA4" FromRole="FAR_COMPRA" ToRole="FAR_ESTATUS" />
+    <NavigationProperty Name="FAR_DETALLE_COMPRA" Relationship="Self.FK_DET_COMPRA2" FromRole="FAR_COMPRA" ToRole="FAR_DETALLE_COMPRA" />
+  </EntityType>
+  <EntityType Name="FAR_DET_TRASLADO">
+    <Key>
+      <PropertyRef Name="ID_TRASLADO" />
+      <PropertyRef Name="ITEM" />
+    </Key>
+    <Property Name="ID_TRASLADO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ITEM" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CANTIDAD" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="COMENTARIO" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_DET_TRAS2" FromRole="FAR_DET_TRASLADO" ToRole="FAR_ARTICULO" />
+    <NavigationProperty Name="FAR_TRASLADO" Relationship="Self.FK_DET_TRAS" FromRole="FAR_DET_TRASLADO" ToRole="FAR_TRASLADO" />
+  </EntityType>
+  <EntityType Name="FAR_DETALLE_COMPRA">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="ITEM" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ITEM" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CANTIDAD" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="COSTO_U" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_DET_COMPRA" FromRole="FAR_DETALLE_COMPRA" ToRole="FAR_ARTICULO" />
+    <NavigationProperty Name="FAR_COMPRA" Relationship="Self.FK_DET_COMPRA2" FromRole="FAR_DETALLE_COMPRA" ToRole="FAR_COMPRA" />
+  </EntityType>
+  <EntityType Name="FAR_DETALLE_VENTA">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+      <PropertyRef Name="ITEM" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ITEM" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CANTIDAD" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="COSTO_U" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_DET_VENTA" FromRole="FAR_DETALLE_VENTA" ToRole="FAR_ARTICULO" />
+    <NavigationProperty Name="FAR_VENTA" Relationship="Self.FK_DET_VENTA2" FromRole="FAR_DETALLE_VENTA" ToRole="FAR_VENTA" />
+  </EntityType>
+  <EntityType Name="FAR_EMP_SUC">
+    <Key>
+      <PropertyRef Name="ID_MOV" />
+      <PropertyRef Name="CODIGO_EMP" />
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_MOV" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODIGO_EMP" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_PUESTO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_BAJA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_EMPLEADO" Relationship="Self.FK_EMP_SUC" FromRole="FAR_EMP_SUC" ToRole="FAR_EMPLEADO" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_EMP_SUC2" FromRole="FAR_EMP_SUC" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_PUESTO" Relationship="Self.FK_EMP_SUC3" FromRole="FAR_EMP_SUC" ToRole="FAR_PUESTO" />
+  </EntityType>
+  <EntityType Name="FAR_EMPLEADO">
+    <Key>
+      <PropertyRef Name="CODIGO_EMP" />
+    </Key>
+    <Property Name="CODIGO_EMP" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRES" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="APELLIDOS" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_NAC" Type="DateTime" Precision="0" />
+    <Property Name="DPI" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_EMP_SUC" Relationship="Self.FK_EMP_SUC" FromRole="FAR_EMPLEADO" ToRole="FAR_EMP_SUC" />
+    <NavigationProperty Name="FAR_PAGO_PLANILLA" Relationship="Self.FK_PAG_EMP2" FromRole="FAR_EMPLEADO" ToRole="FAR_PAGO_PLANILLA" />
+    <NavigationProperty Name="FAR_TRASLADO" Relationship="Self.FK_TRASLA3" FromRole="FAR_EMPLEADO" ToRole="FAR_TRASLADO" />
+    <NavigationProperty Name="FAR_USUARIO" Relationship="Self.FK_USUARIO2" FromRole="FAR_EMPLEADO" ToRole="FAR_USUARIO" />
+  </EntityType>
+  <EntityType Name="FAR_ESTATUS">
+    <Key>
+      <PropertyRef Name="ID_ESTATUS" />
+    </Key>
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_ESTATUS" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_COMPRA" Relationship="Self.FK_COMPRA4" FromRole="FAR_ESTATUS" ToRole="FAR_COMPRA" />
+    <NavigationProperty Name="FAR_MOV_CAJA" Relationship="Self.FK_MOV_CAJA4" FromRole="FAR_ESTATUS" ToRole="FAR_MOV_CAJA" />
+    <NavigationProperty Name="FAR_TRASLADO" Relationship="Self.FK_TRASLA4" FromRole="FAR_ESTATUS" ToRole="FAR_TRASLADO" />
+    <NavigationProperty Name="FAR_USUARIO" Relationship="Self.FK_USUARIO4" FromRole="FAR_ESTATUS" ToRole="FAR_USUARIO" />
+    <NavigationProperty Name="FAR_VENTA" Relationship="Self.FK_VENTA4" FromRole="FAR_ESTATUS" ToRole="FAR_VENTA" />
+  </EntityType>
+  <EntityType Name="FAR_EXISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_SUCURSAL" />
+      <PropertyRef Name="ID_ARTICULO" />
+    </Key>
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="EXISTENCIA" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="COSTO_MEDIO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="USR_MOD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_MOD" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_EXISTENCIA2" FromRole="FAR_EXISTENCIA" ToRole="FAR_ARTICULO" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_EXISTENCIA" FromRole="FAR_EXISTENCIA" ToRole="FAR_SUCURSAL" />
+  </EntityType>
+  <EntityType Name="FAR_MARCA">
+    <Key>
+      <PropertyRef Name="ID_MARCA" />
+    </Key>
+    <Property Name="ID_MARCA" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_MARCA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_ARTICULO2" FromRole="FAR_MARCA" ToRole="FAR_ARTICULO" />
+  </EntityType>
+  <EntityType Name="FAR_MOV_CAJA">
+    <Key>
+      <PropertyRef Name="ID_REGISTRO" />
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_REGISTRO" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_TRANSACCION" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DOCUMENTO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="MONTO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SALDO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="COMENTARIO" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="USER_MOD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_MOD" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_ESTATUS" Relationship="Self.FK_MOV_CAJA4" FromRole="FAR_MOV_CAJA" ToRole="FAR_ESTATUS" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_MOV_CAJA" FromRole="FAR_MOV_CAJA" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_TTRANSACCION" Relationship="Self.FK_MOV_CAJA2" FromRole="FAR_MOV_CAJA" ToRole="FAR_TTRANSACCION" />
+  </EntityType>
+  <EntityType Name="FAR_PAGO_PLANILLA">
+    <Key>
+      <PropertyRef Name="ID_PLANILLA" />
+      <PropertyRef Name="CODIGO_EMP" />
+    </Key>
+    <Property Name="ID_PLANILLA" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CODIGO_EMP" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DIAS_LAB" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SUELDO_NETO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="BONIFICACION" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="IGSS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DESCUENTOS" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="LIQUIDO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="USR_MOD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_MOD" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_EMPLEADO" Relationship="Self.FK_PAG_EMP2" FromRole="FAR_PAGO_PLANILLA" ToRole="FAR_EMPLEADO" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_PAG_EMP1" FromRole="FAR_PAGO_PLANILLA" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_PLANILLA" Relationship="FARMACIAModel.FK_PAG_EMP3" FromRole="FAR_PAGO_PLANILLA" ToRole="FAR_PLANILLA" />
+  </EntityType>
+  <EntityType Name="FAR_PROVEEDOR">
+    <Key>
+      <PropertyRef Name="NIT" />
+    </Key>
+    <Property Name="NIT" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DESC_NIT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NOM_CONTACTO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TEL_CONTACTO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TEL_PROVEEDOR" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="FAR_COMPRA" Relationship="Self.FK_COMPRA2" FromRole="FAR_PROVEEDOR" ToRole="FAR_COMPRA" />
+  </EntityType>
+  <EntityType Name="FAR_PUESTO">
+    <Key>
+      <PropertyRef Name="ID_PUESTO" />
+    </Key>
+    <Property Name="ID_PUESTO" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_PUESTO" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="SUELDO" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="FAR_EMP_SUC" Relationship="Self.FK_EMP_SUC3" FromRole="FAR_PUESTO" ToRole="FAR_EMP_SUC" />
+  </EntityType>
+  <EntityType Name="FAR_ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_USUARIO" Relationship="Self.FK_USUARIO" FromRole="FAR_ROL" ToRole="FAR_USUARIO" />
+  </EntityType>
+  <EntityType Name="FAR_RUTA">
+    <Key>
+      <PropertyRef Name="ID_ZONA" />
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_ZONA" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_BAJA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_ZONA" Relationship="Self.FK_RUTA" FromRole="FAR_RUTA" ToRole="FAR_ZONA" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_RUTA2" FromRole="FAR_RUTA" ToRole="FAR_SUCURSAL" />
+  </EntityType>
+  <EntityType Name="FAR_SUCURSAL">
+    <Key>
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_SUCURSAL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_BAJA" Type="DateTime" Precision="0" />
+    <Property Name="ESTATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_COMPRA" Relationship="Self.FK_COMPRA1" FromRole="FAR_SUCURSAL" ToRole="FAR_COMPRA" />
+    <NavigationProperty Name="FAR_EMP_SUC" Relationship="Self.FK_EMP_SUC2" FromRole="FAR_SUCURSAL" ToRole="FAR_EMP_SUC" />
+    <NavigationProperty Name="FAR_EXISTENCIA" Relationship="Self.FK_EXISTENCIA" FromRole="FAR_SUCURSAL" ToRole="FAR_EXISTENCIA" />
+    <NavigationProperty Name="FAR_MOV_CAJA" Relationship="Self.FK_MOV_CAJA" FromRole="FAR_SUCURSAL" ToRole="FAR_MOV_CAJA" />
+    <NavigationProperty Name="FAR_PAGO_PLANILLA" Relationship="Self.FK_PAG_EMP1" FromRole="FAR_SUCURSAL" ToRole="FAR_PAGO_PLANILLA" />
+    <NavigationProperty Name="FAR_RUTA" Relationship="Self.FK_RUTA2" FromRole="FAR_SUCURSAL" ToRole="FAR_RUTA" />
+    <NavigationProperty Name="FAR_SUCURSAL_ACTIVO" Relationship="Self.FK_SUC_ACT2" FromRole="FAR_SUCURSAL" ToRole="FAR_SUCURSAL_ACTIVO" />
+    <NavigationProperty Name="FAR_TRASLADO" Relationship="Self.FK_TRASLA1" FromRole="FAR_SUCURSAL" ToRole="FAR_TRASLADO" />
+    <NavigationProperty Name="FAR_TRASLADO1" Relationship="Self.FK_TRASLA2" FromRole="FAR_SUCURSAL" ToRole="FAR_TRASLADO" />
+    <NavigationProperty Name="FAR_USUARIO" Relationship="Self.FK_USUARIO3" FromRole="FAR_SUCURSAL" ToRole="FAR_USUARIO" />
+    <NavigationProperty Name="FAR_VENTA" Relationship="Self.FK_VENTA1" FromRole="FAR_SUCURSAL" ToRole="FAR_VENTA" />
+    <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="TELEFONO" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="FAR_SUCURSAL_ACTIVO">
+    <Key>
+      <PropertyRef Name="ID_ARTICULO" />
+      <PropertyRef Name="ID_SUCURSAL" />
+    </Key>
+    <Property Name="ID_ARTICULO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="COSTO_ACTIVO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="COMENTARIO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_BAJA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_SUC_ACT" FromRole="FAR_SUCURSAL_ACTIVO" ToRole="FAR_ARTICULO" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_SUC_ACT2" FromRole="FAR_SUCURSAL_ACTIVO" ToRole="FAR_SUCURSAL" />
+  </EntityType>
+  <EntityType Name="FAR_TIPO_PAGO">
+    <Key>
+      <PropertyRef Name="ID_TPAGO" />
+    </Key>
+    <Property Name="ID_TPAGO" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_TPAGO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_COMPRA" Relationship="Self.FK_COMPRA3" FromRole="FAR_TIPO_PAGO" ToRole="FAR_COMPRA" />
+    <NavigationProperty Name="FAR_VENTA" Relationship="Self.FK_VENTA3" FromRole="FAR_TIPO_PAGO" ToRole="FAR_VENTA" />
+  </EntityType>
+  <EntityType Name="FAR_TRASLADO">
+    <Key>
+      <PropertyRef Name="ID_TRASLADO" />
+    </Key>
+    <Property Name="ID_TRASLADO" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_ORIGEN" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_DESTINO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CODIGO_EMP" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_DET_TRASLADO" Relationship="Self.FK_DET_TRAS" FromRole="FAR_TRASLADO" ToRole="FAR_DET_TRASLADO" />
+    <NavigationProperty Name="FAR_EMPLEADO" Relationship="Self.FK_TRASLA3" FromRole="FAR_TRASLADO" ToRole="FAR_EMPLEADO" />
+    <NavigationProperty Name="FAR_ESTATUS" Relationship="Self.FK_TRASLA4" FromRole="FAR_TRASLADO" ToRole="FAR_ESTATUS" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_TRASLA1" FromRole="FAR_TRASLADO" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_SUCURSAL1" Relationship="Self.FK_TRASLA2" FromRole="FAR_TRASLADO" ToRole="FAR_SUCURSAL" />
+  </EntityType>
+  <EntityType Name="FAR_TTRANSACCION">
+    <Key>
+      <PropertyRef Name="ID_TRANSACCION" />
+    </Key>
+    <Property Name="ID_TRANSACCION" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_TANSACCION" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="FACTOR" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="FAR_MOV_CAJA" Relationship="Self.FK_MOV_CAJA2" FromRole="FAR_TTRANSACCION" ToRole="FAR_MOV_CAJA" />
+  </EntityType>
+  <EntityType Name="FAR_UNIDAD_MED">
+    <Key>
+      <PropertyRef Name="ID_MEDIDA" />
+    </Key>
+    <Property Name="ID_MEDIDA" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_MEDIDA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_ARTICULO" Relationship="Self.FK_ARTICULO3" FromRole="FAR_UNIDAD_MED" ToRole="FAR_ARTICULO" />
+  </EntityType>
+  <EntityType Name="FAR_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ROL" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CODIGO_EMP" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CONTRASENIA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_EMPLEADO" Relationship="Self.FK_USUARIO2" FromRole="FAR_USUARIO" ToRole="FAR_EMPLEADO" />
+    <NavigationProperty Name="FAR_ESTATUS" Relationship="Self.FK_USUARIO4" FromRole="FAR_USUARIO" ToRole="FAR_ESTATUS" />
+    <NavigationProperty Name="FAR_ROL" Relationship="Self.FK_USUARIO" FromRole="FAR_USUARIO" ToRole="FAR_ROL" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_USUARIO3" FromRole="FAR_USUARIO" ToRole="FAR_SUCURSAL" />
+  </EntityType>
+  <EntityType Name="FAR_VENTA">
+    <Key>
+      <PropertyRef Name="FACTURA" />
+    </Key>
+    <Property Name="FACTURA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_SUCURSAL" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ID_ESTATUS" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NIT" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TPAGO" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_CLIENTE" Relationship="Self.FK_VENTA2" FromRole="FAR_VENTA" ToRole="FAR_CLIENTE" />
+    <NavigationProperty Name="FAR_DETALLE_VENTA" Relationship="Self.FK_DET_VENTA2" FromRole="FAR_VENTA" ToRole="FAR_DETALLE_VENTA" />
+    <NavigationProperty Name="FAR_ESTATUS" Relationship="Self.FK_VENTA4" FromRole="FAR_VENTA" ToRole="FAR_ESTATUS" />
+    <NavigationProperty Name="FAR_SUCURSAL" Relationship="Self.FK_VENTA1" FromRole="FAR_VENTA" ToRole="FAR_SUCURSAL" />
+    <NavigationProperty Name="FAR_TIPO_PAGO" Relationship="Self.FK_VENTA3" FromRole="FAR_VENTA" ToRole="FAR_TIPO_PAGO" />
+  </EntityType>
+  <EntityType Name="FAR_ZONA">
+    <Key>
+      <PropertyRef Name="ID_ZONA" />
+    </Key>
+    <Property Name="ID_ZONA" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESC_ZONA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FAR_RUTA" Relationship="Self.FK_RUTA" FromRole="FAR_ZONA" ToRole="FAR_RUTA" />
+  </EntityType>
+  <Association Name="FK_ARTICULO1">
+    <End Role="FAR_CAT_ARTICULO" Type="Self.FAR_CAT_ARTICULO" Multiplicity="0..1" />
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_CAT_ARTICULO">
+        <PropertyRef Name="ID_CAT" />
+      </Principal>
+      <Dependent Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_CAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ARTICULO2">
+    <End Role="FAR_MARCA" Type="Self.FAR_MARCA" Multiplicity="0..1" />
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_MARCA">
+        <PropertyRef Name="ID_MARCA" />
+      </Principal>
+      <Dependent Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_MARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ARTICULO3">
+    <End Role="FAR_UNIDAD_MED" Type="Self.FAR_UNIDAD_MED" Multiplicity="0..1" />
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_UNIDAD_MED">
+        <PropertyRef Name="ID_MEDIDA" />
+      </Principal>
+      <Dependent Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_MEDIDA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_COMPRA">
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="0..1" />
+    <End Role="FAR_DETALLE_COMPRA" Type="Self.FAR_DETALLE_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Principal>
+      <Dependent Role="FAR_DETALLE_COMPRA">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_TRAS2">
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="0..1" />
+    <End Role="FAR_DET_TRASLADO" Type="Self.FAR_DET_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Principal>
+      <Dependent Role="FAR_DET_TRASLADO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_VENTA">
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="0..1" />
+    <End Role="FAR_DETALLE_VENTA" Type="Self.FAR_DETALLE_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Principal>
+      <Dependent Role="FAR_DETALLE_VENTA">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXISTENCIA2">
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="1" />
+    <End Role="FAR_EXISTENCIA" Type="Self.FAR_EXISTENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Principal>
+      <Dependent Role="FAR_EXISTENCIA">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUC_ACT">
+    <End Role="FAR_ARTICULO" Type="Self.FAR_ARTICULO" Multiplicity="1" />
+    <End Role="FAR_SUCURSAL_ACTIVO" Type="Self.FAR_SUCURSAL_ACTIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ARTICULO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Principal>
+      <Dependent Role="FAR_SUCURSAL_ACTIVO">
+        <PropertyRef Name="ID_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VENTA2">
+    <End Role="FAR_CLIENTE" Type="Self.FAR_CLIENTE" Multiplicity="0..1" />
+    <End Role="FAR_VENTA" Type="Self.FAR_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_CLIENTE">
+        <PropertyRef Name="NIT" />
+      </Principal>
+      <Dependent Role="FAR_VENTA">
+        <PropertyRef Name="NIT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPRA1">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_COMPRA" Type="Self.FAR_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_COMPRA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPRA2">
+    <End Role="FAR_PROVEEDOR" Type="Self.FAR_PROVEEDOR" Multiplicity="0..1" />
+    <End Role="FAR_COMPRA" Type="Self.FAR_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_PROVEEDOR">
+        <PropertyRef Name="NIT" />
+      </Principal>
+      <Dependent Role="FAR_COMPRA">
+        <PropertyRef Name="NIT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPRA3">
+    <End Role="FAR_TIPO_PAGO" Type="Self.FAR_TIPO_PAGO" Multiplicity="0..1" />
+    <End Role="FAR_COMPRA" Type="Self.FAR_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_TIPO_PAGO">
+        <PropertyRef Name="ID_TPAGO" />
+      </Principal>
+      <Dependent Role="FAR_COMPRA">
+        <PropertyRef Name="ID_TPAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMPRA4">
+    <End Role="FAR_ESTATUS" Type="Self.FAR_ESTATUS" Multiplicity="0..1" />
+    <End Role="FAR_COMPRA" Type="Self.FAR_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Principal>
+      <Dependent Role="FAR_COMPRA">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_COMPRA2">
+    <End Role="FAR_COMPRA" Type="Self.FAR_COMPRA" Multiplicity="1" />
+    <End Role="FAR_DETALLE_COMPRA" Type="Self.FAR_DETALLE_COMPRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_COMPRA">
+        <PropertyRef Name="FACTURA" />
+      </Principal>
+      <Dependent Role="FAR_DETALLE_COMPRA">
+        <PropertyRef Name="FACTURA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_TRAS">
+    <End Role="FAR_TRASLADO" Type="Self.FAR_TRASLADO" Multiplicity="1" />
+    <End Role="FAR_DET_TRASLADO" Type="Self.FAR_DET_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_TRASLADO">
+        <PropertyRef Name="ID_TRASLADO" />
+      </Principal>
+      <Dependent Role="FAR_DET_TRASLADO">
+        <PropertyRef Name="ID_TRASLADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DET_VENTA2">
+    <End Role="FAR_VENTA" Type="Self.FAR_VENTA" Multiplicity="1" />
+    <End Role="FAR_DETALLE_VENTA" Type="Self.FAR_DETALLE_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_VENTA">
+        <PropertyRef Name="FACTURA" />
+      </Principal>
+      <Dependent Role="FAR_DETALLE_VENTA">
+        <PropertyRef Name="FACTURA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMP_SUC">
+    <End Role="FAR_EMPLEADO" Type="Self.FAR_EMPLEADO" Multiplicity="1" />
+    <End Role="FAR_EMP_SUC" Type="Self.FAR_EMP_SUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_EMPLEADO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Principal>
+      <Dependent Role="FAR_EMP_SUC">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMP_SUC2">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="1" />
+    <End Role="FAR_EMP_SUC" Type="Self.FAR_EMP_SUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_EMP_SUC">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMP_SUC3">
+    <End Role="FAR_PUESTO" Type="Self.FAR_PUESTO" Multiplicity="0..1" />
+    <End Role="FAR_EMP_SUC" Type="Self.FAR_EMP_SUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_PUESTO">
+        <PropertyRef Name="ID_PUESTO" />
+      </Principal>
+      <Dependent Role="FAR_EMP_SUC">
+        <PropertyRef Name="ID_PUESTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAG_EMP2">
+    <End Role="FAR_EMPLEADO" Type="Self.FAR_EMPLEADO" Multiplicity="1" />
+    <End Role="FAR_PAGO_PLANILLA" Type="Self.FAR_PAGO_PLANILLA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_EMPLEADO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Principal>
+      <Dependent Role="FAR_PAGO_PLANILLA">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRASLA3">
+    <End Role="FAR_EMPLEADO" Type="Self.FAR_EMPLEADO" Multiplicity="0..1" />
+    <End Role="FAR_TRASLADO" Type="Self.FAR_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_EMPLEADO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Principal>
+      <Dependent Role="FAR_TRASLADO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO2">
+    <End Role="FAR_EMPLEADO" Type="Self.FAR_EMPLEADO" Multiplicity="0..1" />
+    <End Role="FAR_USUARIO" Type="Self.FAR_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_EMPLEADO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Principal>
+      <Dependent Role="FAR_USUARIO">
+        <PropertyRef Name="CODIGO_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOV_CAJA4">
+    <End Role="FAR_ESTATUS" Type="Self.FAR_ESTATUS" Multiplicity="0..1" />
+    <End Role="FAR_MOV_CAJA" Type="Self.FAR_MOV_CAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Principal>
+      <Dependent Role="FAR_MOV_CAJA">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRASLA4">
+    <End Role="FAR_ESTATUS" Type="Self.FAR_ESTATUS" Multiplicity="0..1" />
+    <End Role="FAR_TRASLADO" Type="Self.FAR_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Principal>
+      <Dependent Role="FAR_TRASLADO">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO4">
+    <End Role="FAR_ESTATUS" Type="Self.FAR_ESTATUS" Multiplicity="0..1" />
+    <End Role="FAR_USUARIO" Type="Self.FAR_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Principal>
+      <Dependent Role="FAR_USUARIO">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VENTA4">
+    <End Role="FAR_ESTATUS" Type="Self.FAR_ESTATUS" Multiplicity="0..1" />
+    <End Role="FAR_VENTA" Type="Self.FAR_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Principal>
+      <Dependent Role="FAR_VENTA">
+        <PropertyRef Name="ID_ESTATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXISTENCIA">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="1" />
+    <End Role="FAR_EXISTENCIA" Type="Self.FAR_EXISTENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_EXISTENCIA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOV_CAJA">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="1" />
+    <End Role="FAR_MOV_CAJA" Type="Self.FAR_MOV_CAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_MOV_CAJA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOV_CAJA2">
+    <End Role="FAR_TTRANSACCION" Type="Self.FAR_TTRANSACCION" Multiplicity="0..1" />
+    <End Role="FAR_MOV_CAJA" Type="Self.FAR_MOV_CAJA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_TTRANSACCION">
+        <PropertyRef Name="ID_TRANSACCION" />
+      </Principal>
+      <Dependent Role="FAR_MOV_CAJA">
+        <PropertyRef Name="ID_TRANSACCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAG_EMP1">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_PAGO_PLANILLA" Type="Self.FAR_PAGO_PLANILLA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_PAGO_PLANILLA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO">
+    <End Role="FAR_ROL" Type="Self.FAR_ROL" Multiplicity="0..1" />
+    <End Role="FAR_USUARIO" Type="Self.FAR_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="FAR_USUARIO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RUTA">
+    <End Role="FAR_ZONA" Type="Self.FAR_ZONA" Multiplicity="1" />
+    <End Role="FAR_RUTA" Type="Self.FAR_RUTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_ZONA">
+        <PropertyRef Name="ID_ZONA" />
+      </Principal>
+      <Dependent Role="FAR_RUTA">
+        <PropertyRef Name="ID_ZONA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RUTA2">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="1" />
+    <End Role="FAR_RUTA" Type="Self.FAR_RUTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_RUTA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUC_ACT2">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="1" />
+    <End Role="FAR_SUCURSAL_ACTIVO" Type="Self.FAR_SUCURSAL_ACTIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_SUCURSAL_ACTIVO">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRASLA1">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_TRASLADO" Type="Self.FAR_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_TRASLADO">
+        <PropertyRef Name="ID_ORIGEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRASLA2">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_TRASLADO" Type="Self.FAR_TRASLADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_TRASLADO">
+        <PropertyRef Name="ID_DESTINO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO3">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_USUARIO" Type="Self.FAR_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_USUARIO">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VENTA1">
+    <End Role="FAR_SUCURSAL" Type="Self.FAR_SUCURSAL" Multiplicity="0..1" />
+    <End Role="FAR_VENTA" Type="Self.FAR_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_SUCURSAL">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Principal>
+      <Dependent Role="FAR_VENTA">
+        <PropertyRef Name="ID_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VENTA3">
+    <End Role="FAR_TIPO_PAGO" Type="Self.FAR_TIPO_PAGO" Multiplicity="0..1" />
+    <End Role="FAR_VENTA" Type="Self.FAR_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_TIPO_PAGO">
+        <PropertyRef Name="ID_TPAGO" />
+      </Principal>
+      <Dependent Role="FAR_VENTA">
+        <PropertyRef Name="ID_TPAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FARMACIAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FAR_ARTICULO" EntityType="Self.FAR_ARTICULO" />
+    <EntitySet Name="FAR_CAT_ARTICULO" EntityType="Self.FAR_CAT_ARTICULO" />
+    <EntitySet Name="FAR_CLIENTE" EntityType="Self.FAR_CLIENTE" />
+    <EntitySet Name="FAR_COMPRA" EntityType="Self.FAR_COMPRA" />
+    <EntitySet Name="FAR_DET_TRASLADO" EntityType="Self.FAR_DET_TRASLADO" />
+    <EntitySet Name="FAR_DETALLE_COMPRA" EntityType="Self.FAR_DETALLE_COMPRA" />
+    <EntitySet Name="FAR_DETALLE_VENTA" EntityType="Self.FAR_DETALLE_VENTA" />
+    <EntitySet Name="FAR_EMP_SUC" EntityType="Self.FAR_EMP_SUC" />
+    <EntitySet Name="FAR_EMPLEADO" EntityType="Self.FAR_EMPLEADO" />
+    <EntitySet Name="FAR_ESTATUS" EntityType="Self.FAR_ESTATUS" />
+    <EntitySet Name="FAR_EXISTENCIA" EntityType="Self.FAR_EXISTENCIA" />
+    <EntitySet Name="FAR_MARCA" EntityType="Self.FAR_MARCA" />
+    <EntitySet Name="FAR_MOV_CAJA" EntityType="Self.FAR_MOV_CAJA" />
+    <EntitySet Name="FAR_PAGO_PLANILLA" EntityType="Self.FAR_PAGO_PLANILLA" />
+    <EntitySet Name="FAR_PROVEEDOR" EntityType="Self.FAR_PROVEEDOR" />
+    <EntitySet Name="FAR_PUESTO" EntityType="Self.FAR_PUESTO" />
+    <EntitySet Name="FAR_ROL" EntityType="Self.FAR_ROL" />
+    <EntitySet Name="FAR_RUTA" EntityType="Self.FAR_RUTA" />
+    <EntitySet Name="FAR_SUCURSAL" EntityType="Self.FAR_SUCURSAL" />
+    <EntitySet Name="FAR_SUCURSAL_ACTIVO" EntityType="Self.FAR_SUCURSAL_ACTIVO" />
+    <EntitySet Name="FAR_TIPO_PAGO" EntityType="Self.FAR_TIPO_PAGO" />
+    <EntitySet Name="FAR_TRASLADO" EntityType="Self.FAR_TRASLADO" />
+    <EntitySet Name="FAR_TTRANSACCION" EntityType="Self.FAR_TTRANSACCION" />
+    <EntitySet Name="FAR_UNIDAD_MED" EntityType="Self.FAR_UNIDAD_MED" />
+    <EntitySet Name="FAR_USUARIO" EntityType="Self.FAR_USUARIO" />
+    <EntitySet Name="FAR_VENTA" EntityType="Self.FAR_VENTA" />
+    <EntitySet Name="FAR_ZONA" EntityType="Self.FAR_ZONA" />
+    <AssociationSet Name="FK_ARTICULO1" Association="Self.FK_ARTICULO1">
+      <End Role="FAR_CAT_ARTICULO" EntitySet="FAR_CAT_ARTICULO" />
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ARTICULO2" Association="Self.FK_ARTICULO2">
+      <End Role="FAR_MARCA" EntitySet="FAR_MARCA" />
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ARTICULO3" Association="Self.FK_ARTICULO3">
+      <End Role="FAR_UNIDAD_MED" EntitySet="FAR_UNIDAD_MED" />
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_COMPRA" Association="Self.FK_DET_COMPRA">
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+      <End Role="FAR_DETALLE_COMPRA" EntitySet="FAR_DETALLE_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_TRAS2" Association="Self.FK_DET_TRAS2">
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+      <End Role="FAR_DET_TRASLADO" EntitySet="FAR_DET_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_VENTA" Association="Self.FK_DET_VENTA">
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+      <End Role="FAR_DETALLE_VENTA" EntitySet="FAR_DETALLE_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXISTENCIA2" Association="Self.FK_EXISTENCIA2">
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+      <End Role="FAR_EXISTENCIA" EntitySet="FAR_EXISTENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUC_ACT" Association="Self.FK_SUC_ACT">
+      <End Role="FAR_ARTICULO" EntitySet="FAR_ARTICULO" />
+      <End Role="FAR_SUCURSAL_ACTIVO" EntitySet="FAR_SUCURSAL_ACTIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VENTA2" Association="Self.FK_VENTA2">
+      <End Role="FAR_CLIENTE" EntitySet="FAR_CLIENTE" />
+      <End Role="FAR_VENTA" EntitySet="FAR_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPRA1" Association="Self.FK_COMPRA1">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_COMPRA" EntitySet="FAR_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPRA2" Association="Self.FK_COMPRA2">
+      <End Role="FAR_PROVEEDOR" EntitySet="FAR_PROVEEDOR" />
+      <End Role="FAR_COMPRA" EntitySet="FAR_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPRA3" Association="Self.FK_COMPRA3">
+      <End Role="FAR_TIPO_PAGO" EntitySet="FAR_TIPO_PAGO" />
+      <End Role="FAR_COMPRA" EntitySet="FAR_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMPRA4" Association="Self.FK_COMPRA4">
+      <End Role="FAR_ESTATUS" EntitySet="FAR_ESTATUS" />
+      <End Role="FAR_COMPRA" EntitySet="FAR_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_COMPRA2" Association="Self.FK_DET_COMPRA2">
+      <End Role="FAR_COMPRA" EntitySet="FAR_COMPRA" />
+      <End Role="FAR_DETALLE_COMPRA" EntitySet="FAR_DETALLE_COMPRA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_TRAS" Association="Self.FK_DET_TRAS">
+      <End Role="FAR_TRASLADO" EntitySet="FAR_TRASLADO" />
+      <End Role="FAR_DET_TRASLADO" EntitySet="FAR_DET_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DET_VENTA2" Association="Self.FK_DET_VENTA2">
+      <End Role="FAR_VENTA" EntitySet="FAR_VENTA" />
+      <End Role="FAR_DETALLE_VENTA" EntitySet="FAR_DETALLE_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMP_SUC" Association="Self.FK_EMP_SUC">
+      <End Role="FAR_EMPLEADO" EntitySet="FAR_EMPLEADO" />
+      <End Role="FAR_EMP_SUC" EntitySet="FAR_EMP_SUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMP_SUC2" Association="Self.FK_EMP_SUC2">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_EMP_SUC" EntitySet="FAR_EMP_SUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMP_SUC3" Association="Self.FK_EMP_SUC3">
+      <End Role="FAR_PUESTO" EntitySet="FAR_PUESTO" />
+      <End Role="FAR_EMP_SUC" EntitySet="FAR_EMP_SUC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAG_EMP2" Association="Self.FK_PAG_EMP2">
+      <End Role="FAR_EMPLEADO" EntitySet="FAR_EMPLEADO" />
+      <End Role="FAR_PAGO_PLANILLA" EntitySet="FAR_PAGO_PLANILLA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRASLA3" Association="Self.FK_TRASLA3">
+      <End Role="FAR_EMPLEADO" EntitySet="FAR_EMPLEADO" />
+      <End Role="FAR_TRASLADO" EntitySet="FAR_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO2" Association="Self.FK_USUARIO2">
+      <End Role="FAR_EMPLEADO" EntitySet="FAR_EMPLEADO" />
+      <End Role="FAR_USUARIO" EntitySet="FAR_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOV_CAJA4" Association="Self.FK_MOV_CAJA4">
+      <End Role="FAR_ESTATUS" EntitySet="FAR_ESTATUS" />
+      <End Role="FAR_MOV_CAJA" EntitySet="FAR_MOV_CAJA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRASLA4" Association="Self.FK_TRASLA4">
+      <End Role="FAR_ESTATUS" EntitySet="FAR_ESTATUS" />
+      <End Role="FAR_TRASLADO" EntitySet="FAR_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO4" Association="Self.FK_USUARIO4">
+      <End Role="FAR_ESTATUS" EntitySet="FAR_ESTATUS" />
+      <End Role="FAR_USUARIO" EntitySet="FAR_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VENTA4" Association="Self.FK_VENTA4">
+      <End Role="FAR_ESTATUS" EntitySet="FAR_ESTATUS" />
+      <End Role="FAR_VENTA" EntitySet="FAR_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXISTENCIA" Association="Self.FK_EXISTENCIA">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_EXISTENCIA" EntitySet="FAR_EXISTENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOV_CAJA" Association="Self.FK_MOV_CAJA">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_MOV_CAJA" EntitySet="FAR_MOV_CAJA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOV_CAJA2" Association="Self.FK_MOV_CAJA2">
+      <End Role="FAR_TTRANSACCION" EntitySet="FAR_TTRANSACCION" />
+      <End Role="FAR_MOV_CAJA" EntitySet="FAR_MOV_CAJA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAG_EMP1" Association="Self.FK_PAG_EMP1">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_PAGO_PLANILLA" EntitySet="FAR_PAGO_PLANILLA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO" Association="Self.FK_USUARIO">
+      <End Role="FAR_ROL" EntitySet="FAR_ROL" />
+      <End Role="FAR_USUARIO" EntitySet="FAR_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RUTA" Association="Self.FK_RUTA">
+      <End Role="FAR_ZONA" EntitySet="FAR_ZONA" />
+      <End Role="FAR_RUTA" EntitySet="FAR_RUTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RUTA2" Association="Self.FK_RUTA2">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_RUTA" EntitySet="FAR_RUTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUC_ACT2" Association="Self.FK_SUC_ACT2">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_SUCURSAL_ACTIVO" EntitySet="FAR_SUCURSAL_ACTIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRASLA1" Association="Self.FK_TRASLA1">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_TRASLADO" EntitySet="FAR_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRASLA2" Association="Self.FK_TRASLA2">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_TRASLADO" EntitySet="FAR_TRASLADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO3" Association="Self.FK_USUARIO3">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_USUARIO" EntitySet="FAR_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VENTA1" Association="Self.FK_VENTA1">
+      <End Role="FAR_SUCURSAL" EntitySet="FAR_SUCURSAL" />
+      <End Role="FAR_VENTA" EntitySet="FAR_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VENTA3" Association="Self.FK_VENTA3">
+      <End Role="FAR_TIPO_PAGO" EntitySet="FAR_TIPO_PAGO" />
+      <End Role="FAR_VENTA" EntitySet="FAR_VENTA" />
+    </AssociationSet>
+    <EntitySet Name="FAR_PLANILLA" EntityType="FARMACIAModel.FAR_PLANILLA" />
+    <AssociationSet Name="FK_PAG_EMP3" Association="FARMACIAModel.FK_PAG_EMP3">
+      <End Role="FAR_PLANILLA" EntitySet="FAR_PLANILLA" />
+      <End Role="FAR_PAGO_PLANILLA" EntitySet="FAR_PAGO_PLANILLA" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FAR_PLANILLA">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="FAR_PAGO_PLANILLA" Relationship="FARMACIAModel.FK_PAG_EMP3" FromRole="FAR_PLANILLA" ToRole="FAR_PAGO_PLANILLA" />
+  </EntityType>
+  <Association Name="FK_PAG_EMP3">
+    <End Type="FARMACIAModel.FAR_PLANILLA" Role="FAR_PLANILLA" Multiplicity="1" />
+    <End Type="FARMACIAModel.FAR_PAGO_PLANILLA" Role="FAR_PAGO_PLANILLA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAR_PLANILLA">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FAR_PAGO_PLANILLA">
+        <PropertyRef Name="ID_PLANILLA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

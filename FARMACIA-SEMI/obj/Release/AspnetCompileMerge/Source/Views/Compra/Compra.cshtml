@@ -1,0 +1,141 @@
+﻿@model FARMACIA_SEMI.Models.Compra
+@{
+    Layout = "~/Views/Shared/_Limpio.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">MANTENIMIENTO DE COMPRAS</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Compra", "Compra", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @*<div class="row form-group-sm">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.far_compra.FACTURA, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.far_compra.FACTURA, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.far_compra.FACTURA, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>*@
+
+                <div class="row form-group-sm">
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.far_compra.ID_SUCURSAL, "SUCURSAL", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-6">
+                            @Html.DropDownList("ID_SUCURSAL", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.far_compra.ID_SUCURSAL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group-sm">
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.far_compra.ID_TPAGO, "PAGO", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-6">
+                            @Html.DropDownList("ID_TPAGO", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.far_compra.ID_TPAGO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        @Html.LabelFor(model => model.far_compra.NIT, "PROVEEDOR", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-sm-6">
+                            @Html.DropDownList("NIT", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.far_compra.NIT, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="btn-group-xs">
+                        @Html.ActionLink("NUEVO PRODUCTO", "agregarProducto", "Compra", null, new { @class = "btn btn-primary" })
+                        <input type="submit" value="REGISTRAR COMPRA" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <h4>DETALLE DE COMPRA</h4>
+
+        <table class=" table table-bordered table-hover ">
+            <thead class="p-3 mb-2 bg-success text-white">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].ITEM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].ID_ARTICULO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].DESCRIPCION)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].DES_MEDIDA)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].CANTIDAD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].COSTO_U)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.far_det_compra[0].SUBTOTAL)
+                    </th>
+                </tr>
+            </thead>
+
+            @for (int i = 0; i < Model.far_det_compra.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].ITEM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].ID_ARTICULO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].DESCRIPCION)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].DES_MEDIDA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].CANTIDAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].COSTO_U)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.far_det_compra[i].SUBTOTAL)
+                    </td>
+                    <td class="btn-group-xs">
+                       @Html.ActionLink("ELIMINAR", "EliminarItem", new { id = Model.far_det_compra[i].ITEM }, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            }
+        </table>
+        <table class="table ">
+            <tr>
+                <th class="col-lg-10">Total</th>
+                <td class="col-lg-10">@Html.DisplayFor(modelItem => Model.TOTAL)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("REGRESAR INICIO", "Index", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+</div>
+
+<br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

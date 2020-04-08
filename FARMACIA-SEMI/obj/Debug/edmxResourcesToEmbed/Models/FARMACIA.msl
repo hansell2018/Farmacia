@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FARMACIAModelStoreContainer" CdmEntityContainer="FARMACIAEntities">
+    <EntitySetMapping Name="FAR_ARTICULO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_ARTICULO">
+        <MappingFragment StoreEntitySet="FAR_ARTICULO">
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+          <ScalarProperty Name="ID_CAT" ColumnName="ID_CAT" />
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+          <ScalarProperty Name="DESC_ARTICULO" ColumnName="DESC_ARTICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_CAT_ARTICULO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_CAT_ARTICULO">
+        <MappingFragment StoreEntitySet="FAR_CAT_ARTICULO">
+          <ScalarProperty Name="ID_CAT" ColumnName="ID_CAT" />
+          <ScalarProperty Name="DESC_CAT" ColumnName="DESC_CAT" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_CLIENTE">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_CLIENTE">
+        <MappingFragment StoreEntitySet="FAR_CLIENTE">
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_COMPRA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_COMPRA">
+        <MappingFragment StoreEntitySet="FAR_COMPRA">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="ID_TPAGO" ColumnName="ID_TPAGO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_DET_TRASLADO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_DET_TRASLADO">
+        <MappingFragment StoreEntitySet="FAR_DET_TRASLADO">
+          <ScalarProperty Name="ID_TRASLADO" ColumnName="ID_TRASLADO" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_DETALLE_COMPRA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_DETALLE_COMPRA">
+        <MappingFragment StoreEntitySet="FAR_DETALLE_COMPRA">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="COSTO_U" ColumnName="COSTO_U" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_DETALLE_VENTA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_DETALLE_VENTA">
+        <MappingFragment StoreEntitySet="FAR_DETALLE_VENTA">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="ITEM" ColumnName="ITEM" />
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="COSTO_U" ColumnName="COSTO_U" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_EMP_SUC">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_EMP_SUC">
+        <MappingFragment StoreEntitySet="FAR_EMP_SUC">
+          <ScalarProperty Name="ID_MOV" ColumnName="ID_MOV" />
+          <ScalarProperty Name="CODIGO_EMP" ColumnName="CODIGO_EMP" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_EMPLEADO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_EMPLEADO">
+        <MappingFragment StoreEntitySet="FAR_EMPLEADO">
+          <ScalarProperty Name="CODIGO_EMP" ColumnName="CODIGO_EMP" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+          <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+          <ScalarProperty Name="DPI" ColumnName="DPI" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_ESTATUS">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_ESTATUS">
+        <MappingFragment StoreEntitySet="FAR_ESTATUS">
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="DESC_ESTATUS" ColumnName="DESC_ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_EXISTENCIA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_EXISTENCIA">
+        <MappingFragment StoreEntitySet="FAR_EXISTENCIA">
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="EXISTENCIA" ColumnName="EXISTENCIA" />
+          <ScalarProperty Name="COSTO_MEDIO" ColumnName="COSTO_MEDIO" />
+          <ScalarProperty Name="USR_MOD" ColumnName="USR_MOD" />
+          <ScalarProperty Name="FECHA_MOD" ColumnName="FECHA_MOD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_MARCA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_MARCA">
+        <MappingFragment StoreEntitySet="FAR_MARCA">
+          <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+          <ScalarProperty Name="DESC_MARCA" ColumnName="DESC_MARCA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_MOV_CAJA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_MOV_CAJA">
+        <MappingFragment StoreEntitySet="FAR_MOV_CAJA">
+          <ScalarProperty Name="ID_REGISTRO" ColumnName="ID_REGISTRO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_TRANSACCION" ColumnName="ID_TRANSACCION" />
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
+          <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+          <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+          <ScalarProperty Name="USER_MOD" ColumnName="USER_MOD" />
+          <ScalarProperty Name="FECHA_MOD" ColumnName="FECHA_MOD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_PAGO_PLANILLA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_PAGO_PLANILLA">
+        <MappingFragment StoreEntitySet="FAR_PAGO_PLANILLA">
+          <ScalarProperty Name="ID_PLANILLA" ColumnName="ID_PLANILLA" />
+          <ScalarProperty Name="CODIGO_EMP" ColumnName="CODIGO_EMP" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="DIAS_LAB" ColumnName="DIAS_LAB" />
+          <ScalarProperty Name="SUELDO_NETO" ColumnName="SUELDO_NETO" />
+          <ScalarProperty Name="BONIFICACION" ColumnName="BONIFICACION" />
+          <ScalarProperty Name="IGSS" ColumnName="IGSS" />
+          <ScalarProperty Name="DESCUENTOS" ColumnName="DESCUENTOS" />
+          <ScalarProperty Name="LIQUIDO" ColumnName="LIQUIDO" />
+          <ScalarProperty Name="USR_MOD" ColumnName="USR_MOD" />
+          <ScalarProperty Name="FECHA_MOD" ColumnName="FECHA_MOD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_PROVEEDOR">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_PROVEEDOR">
+        <MappingFragment StoreEntitySet="FAR_PROVEEDOR">
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="DESC_NIT" ColumnName="DESC_NIT" />
+          <ScalarProperty Name="NOM_CONTACTO" ColumnName="NOM_CONTACTO" />
+          <ScalarProperty Name="TEL_CONTACTO" ColumnName="TEL_CONTACTO" />
+          <ScalarProperty Name="TEL_PROVEEDOR" ColumnName="TEL_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_PUESTO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_PUESTO">
+        <MappingFragment StoreEntitySet="FAR_PUESTO">
+          <ScalarProperty Name="ID_PUESTO" ColumnName="ID_PUESTO" />
+          <ScalarProperty Name="DESC_PUESTO" ColumnName="DESC_PUESTO" />
+          <ScalarProperty Name="SUELDO" ColumnName="SUELDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_ROL">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_ROL">
+        <MappingFragment StoreEntitySet="FAR_ROL">
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="DESC_ROL" ColumnName="DESC_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_RUTA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_RUTA">
+        <MappingFragment StoreEntitySet="FAR_RUTA">
+          <ScalarProperty Name="ID_ZONA" ColumnName="ID_ZONA" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_SUCURSAL">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_SUCURSAL">
+        <MappingFragment StoreEntitySet="FAR_SUCURSAL">
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="DESC_SUCURSAL" ColumnName="DESC_SUCURSAL" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+          <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_SUCURSAL_ACTIVO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_SUCURSAL_ACTIVO">
+        <MappingFragment StoreEntitySet="FAR_SUCURSAL_ACTIVO">
+          <ScalarProperty Name="ID_ARTICULO" ColumnName="ID_ARTICULO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="COSTO_ACTIVO" ColumnName="COSTO_ACTIVO" />
+          <ScalarProperty Name="COMENTARIO" ColumnName="COMENTARIO" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_TIPO_PAGO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_TIPO_PAGO">
+        <MappingFragment StoreEntitySet="FAR_TIPO_PAGO">
+          <ScalarProperty Name="ID_TPAGO" ColumnName="ID_TPAGO" />
+          <ScalarProperty Name="DESC_TPAGO" ColumnName="DESC_TPAGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_TRASLADO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_TRASLADO">
+        <MappingFragment StoreEntitySet="FAR_TRASLADO">
+          <ScalarProperty Name="ID_TRASLADO" ColumnName="ID_TRASLADO" />
+          <ScalarProperty Name="ID_ORIGEN" ColumnName="ID_ORIGEN" />
+          <ScalarProperty Name="ID_DESTINO" ColumnName="ID_DESTINO" />
+          <ScalarProperty Name="CODIGO_EMP" ColumnName="CODIGO_EMP" />
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_TTRANSACCION">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_TTRANSACCION">
+        <MappingFragment StoreEntitySet="FAR_TTRANSACCION">
+          <ScalarProperty Name="ID_TRANSACCION" ColumnName="ID_TRANSACCION" />
+          <ScalarProperty Name="DESC_TANSACCION" ColumnName="DESC_TANSACCION" />
+          <ScalarProperty Name="FACTOR" ColumnName="FACTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_UNIDAD_MED">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_UNIDAD_MED">
+        <MappingFragment StoreEntitySet="FAR_UNIDAD_MED">
+          <ScalarProperty Name="ID_MEDIDA" ColumnName="ID_MEDIDA" />
+          <ScalarProperty Name="DESC_MEDIDA" ColumnName="DESC_MEDIDA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_USUARIO">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_USUARIO">
+        <MappingFragment StoreEntitySet="FAR_USUARIO">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="CODIGO_EMP" ColumnName="CODIGO_EMP" />
+          <ScalarProperty Name="CONTRASENIA" ColumnName="CONTRASENIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_VENTA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_VENTA">
+        <MappingFragment StoreEntitySet="FAR_VENTA">
+          <ScalarProperty Name="FACTURA" ColumnName="FACTURA" />
+          <ScalarProperty Name="ID_SUCURSAL" ColumnName="ID_SUCURSAL" />
+          <ScalarProperty Name="ID_ESTATUS" ColumnName="ID_ESTATUS" />
+          <ScalarProperty Name="NIT" ColumnName="NIT" />
+          <ScalarProperty Name="ID_TPAGO" ColumnName="ID_TPAGO" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_ZONA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_ZONA">
+        <MappingFragment StoreEntitySet="FAR_ZONA">
+          <ScalarProperty Name="ID_ZONA" ColumnName="ID_ZONA" />
+          <ScalarProperty Name="DESC_ZONA" ColumnName="DESC_ZONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAR_PLANILLA">
+      <EntityTypeMapping TypeName="FARMACIAModel.FAR_PLANILLA">
+        <MappingFragment StoreEntitySet="FAR_PLANILLA">
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

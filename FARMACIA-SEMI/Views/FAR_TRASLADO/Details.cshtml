@@ -1,0 +1,50 @@
+﻿@model FARMACIA_SEMI.Models.FAR_TRASLADO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FAR_TRASLADO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_EMPLEADO.NOMBRES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_EMPLEADO.NOMBRES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL1.DESC_SUCURSAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAR_SUCURSAL1.DESC_SUCURSAL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TRASLADO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

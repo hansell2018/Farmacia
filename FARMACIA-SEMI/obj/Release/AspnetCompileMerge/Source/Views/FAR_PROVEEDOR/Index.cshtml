@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_PROVEEDOR>
+
+@{
+    ViewBag.Title = "LISTADO DE PROVEEDORES";
+    Layout = "~/Views/Shared/_LayoutFom.cshtml";
+}
+
+<table class="table table-bordered table-hover">
+
+    <thead class="p-3 mb-2 bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NIT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESC_NIT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOM_CONTACTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEL_CONTACTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TEL_PROVEEDOR)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESC_NIT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOM_CONTACTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEL_CONTACTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEL_PROVEEDOR)
+                </td>
+                <td class="btn-group-xs">
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.NIT }, new { @class = "btn btn-primary" }) @*|
+                        @Html.ActionLink("BORRAR", "Delete", new { id = item.NIT })*@
+                </td>
+            </tr>
+        }
+
+</table>

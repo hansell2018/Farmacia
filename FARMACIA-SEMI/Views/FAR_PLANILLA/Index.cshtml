@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_PLANILLA>
+
+@{
+    ViewBag.Title = "HISTORIAL DE PLANILLAS";
+    Layout = "~/Views/Shared/_LayoutFom.cshtml";
+}
+
+<table class="table table-bordered table-hover">
+    <thead class="p-3 mb-2 bg-success text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_INICIO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_FIN)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_FIN)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+    </tr>
+}
+
+</table>

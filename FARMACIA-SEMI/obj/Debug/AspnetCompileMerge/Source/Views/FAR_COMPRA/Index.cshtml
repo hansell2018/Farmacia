@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FARMACIA_SEMI.Models.FAR_COMPRA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_SUCURSAL.DESC_SUCURSAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_PROVEEDOR.DESC_NIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_TIPO_PAGO.DESC_TPAGO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAR_DETALLE_COMPRA.FACTURA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_SUCURSAL.DESC_SUCURSAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_PROVEEDOR.DESC_NIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_TIPO_PAGO.DESC_TPAGO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAR_DETALLE_COMPRA.FACTURA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FACTURA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FACTURA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FACTURA })
+        </td>
+    </tr>
+}
+
+</table>
